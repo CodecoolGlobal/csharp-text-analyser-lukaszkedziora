@@ -1,13 +1,23 @@
+using System;
+using System.Text;
+
 namespace csharp_text_analyser_lukaszkedziora
 {
     public class CharIterator : Iterator
     {
         private string FileContent;
         private int index = 0;
-        public CharIterator(string fileContent){
-            this.FileContent = fileContent;
-        }
+        public string letter;
 
+        public CharIterator(FileContent fileContent){
+            this.FileContent = fileContent.File;
+            
+        }
+         public CharIterator(){
+           
+            
+        }
+        
         private bool IsWhiteSpace(char element){
             if (element == ' '){
                return false; 
@@ -15,9 +25,6 @@ namespace csharp_text_analyser_lukaszkedziora
         return true;
         }
 
-       // public void isAlphabetical();{
-
-       // }
 
         public bool HasNext(){
             if (index < FileContent.Length){
@@ -28,12 +35,8 @@ namespace csharp_text_analyser_lukaszkedziora
         }
 
         public string MoveNext(){
-         if (this.IsWhiteSpace(FileContent[index])){
-                return FileContent[index++].ToString();
-            }
-            index++;
-            //this.Remove();
-            return null;
+                letter = FileContent[index++].ToString();
+                return letter;
         }
 
         public void Remove()

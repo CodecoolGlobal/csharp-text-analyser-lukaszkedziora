@@ -1,21 +1,34 @@
+using System.Text;
 using System;
 
 namespace csharp_text_analyser_lukaszkedziora
 {
     public class FileContent : IterableText
     {
-        private string File;
+        public string File;
+        private string FileWord;
+        public string[] FileWordList;
+
+      //  FileContent test = new FileContent();
 
         public FileContent(string file){
             this.File = System.IO.File.ReadAllText(@file);
+            this.File = File.Replace("\n" , " ").Replace("\r", " ").Replace("  ", " ").Replace("   ", " ").Replace("    "," ");
+            this.FileWord = File;
+                        
+        }
+        public FileContent(){
+            
         }
 
         public Iterator CharIterator(){
-            return new CharIterator(File);
+            File = File.Replace(" " , "");
+            return new CharIterator(this);
         }
 
         public Iterator WordIterator(){   
-             return new WordIterator(File);
+            FileWordList = FileWord.Split(' ');
+            return new WordIterator(this);
 
         }
     }

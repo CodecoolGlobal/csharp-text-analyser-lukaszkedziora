@@ -9,30 +9,26 @@ namespace csharp_text_analyser_lukaszkedziora
             string[] argument = new string[1];
             argument[0] = "test.txt";        
             Console.WriteLine(argument[0]);
-           
+            int sumChar = 0;
+            int sumWord = 0;
+            FileContent file = new FileContent("test.txt");
+
            
            // foreach (string file_name in argument)
-            FileContent file = new FileContent("test.txt");
-                //for(Iterator iter = file.CharIterator  )
-
-
             for(Iterator iter = file.CharIterator(); iter.HasNext();){
-            //StatisticalAnalysis elements = new StatisticalAnalysis(iter.MoveNext());}
-            String name = iter.MoveNext();
-            Console.Write(name);}
-
-
+            StatisticalAnalysis oneletter = new StatisticalAnalysis(iter);
+            sumChar = sumChar + (oneletter.Size());
+            }
+            Console.WriteLine(sumChar);
             for(Iterator iter = file.WordIterator(); iter.HasNext();){
-            //StatisticalAnalysis elements = new StatisticalAnalysis(iter.MoveNext());}
-            String name = iter.MoveNext();
-           
+            StatisticalAnalysis oneletter = new StatisticalAnalysis(iter);
+            sumWord = sumWord + (oneletter.Size());
+            }
+            Console.WriteLine(sumWord);
 
-            Console.Write(name);}
             
-                    
-            
-
 
         }
+        
     }
 }

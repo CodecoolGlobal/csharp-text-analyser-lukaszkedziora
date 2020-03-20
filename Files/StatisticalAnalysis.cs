@@ -1,13 +1,21 @@
 using System;
+using System.Text;
+
 
 namespace csharp_text_analyser_lukaszkedziora
 {
     class StatisticalAnalysis
 
     {
-        public string Elements; 
-        public StatisticalAnalysis(string elements){
-            this.Elements = elements;
+       private Iterator Elements;
+       private int counter = 0;
+       //private StringBuilder FileContentWithoutWhite = new StringBuilder(10);
+        public StatisticalAnalysis(Iterator elements){
+             this.Elements = elements;
+        }
+    
+        public StatisticalAnalysis(){
+           
 
         }
 
@@ -20,7 +28,10 @@ namespace csharp_text_analyser_lukaszkedziora
         }
 
         public int Size(){
-            return 0;
+            Elements.MoveNext();
+            counter++;
+              
+            return counter;           
         } 
 
 

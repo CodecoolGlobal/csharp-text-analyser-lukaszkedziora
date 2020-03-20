@@ -1,16 +1,16 @@
+using System.Linq;
+
 using System;
 using System.Text;
-
 namespace csharp_text_analyser_lukaszkedziora
 {
     public class WordIterator : Iterator
     {
-        private string FileContent;
+        private FileContent FileContent;
         private int index = 0;
         public string word;
-        StringBuilder sb = new StringBuilder(10);
         
-        public WordIterator(string fileContent){
+        public WordIterator(FileContent fileContent){
             this.FileContent = fileContent;
         }
 
@@ -22,24 +22,16 @@ namespace csharp_text_analyser_lukaszkedziora
         }
         
         public bool HasNext(){
-        if (index < FileContent.Length){
+        if (index < FileContent.FileWordList.Length){
                 return true;
                 }
             return false;
             
         }
 
-
         public string MoveNext(){
-            string word = null;
-         if (this.IsWhiteSpace(FileContent[index])){
-                index++;
-                word = sb.ToString();
-                sb.Clear();
-                return word;
-            }
-                sb.Append(FileContent[index++]);
-                return null;
+            return FileContent.FileWordList[index++];
+            
         }
 
         public void Remove()
