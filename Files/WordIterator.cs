@@ -4,11 +4,10 @@ using System;
 using System.Text;
 namespace csharp_text_analyser_lukaszkedziora
 {
-    public class WordIterator : Iterator
+    public class WordIterator : IIterator
     {
         private FileContent FileContent;
         private int index = 0;
-        public string word;
         
         public WordIterator(FileContent fileContent){
             this.FileContent = fileContent;
@@ -22,7 +21,7 @@ namespace csharp_text_analyser_lukaszkedziora
         }
         
         public bool HasNext(){
-        if (index < FileContent.FileWordList.Length){
+        if (index++ < FileContent.FileWordList.Length){
                 return true;
                 }
             return false;
@@ -30,7 +29,7 @@ namespace csharp_text_analyser_lukaszkedziora
         }
 
         public string MoveNext(){
-            return FileContent.FileWordList[index++];
+            return FileContent.FileWordList[index-1];
             
         }
 

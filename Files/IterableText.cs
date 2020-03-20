@@ -2,10 +2,10 @@ using System;
 
 namespace csharp_text_analyser_lukaszkedziora
 {
-    interface IterableText
+    interface IIterableText
     {
-        public Iterator CharIterator();
-        public Iterator WordIterator();
+        public IIterator CharIterator();
+        public IIterator WordIterator();
 
     }
 }

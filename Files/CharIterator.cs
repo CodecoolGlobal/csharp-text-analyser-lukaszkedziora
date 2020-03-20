@@ -3,7 +3,7 @@ using System.Text;
 
 namespace csharp_text_analyser_lukaszkedziora
 {
-    public class CharIterator : Iterator
+    public class CharIterator : IIterator
     {
         private string FileContent;
         private int index = 0;

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 
 namespace csharp_text_analyser_lukaszkedziora
 {
@@ -12,20 +14,26 @@ namespace csharp_text_analyser_lukaszkedziora
             int sumChar = 0;
             int sumWord = 0;
             FileContent file = new FileContent("test.txt");
+            HashSet<string> words = new HashSet<string>(); 
+            int sumDictionary = 0;
+
 
            
            // foreach (string file_name in argument)
-            for(Iterator iter = file.CharIterator(); iter.HasNext();){
+            for(IIterator iter = file.CharIterator(); iter.HasNext();){
             StatisticalAnalysis oneletter = new StatisticalAnalysis(iter);
             sumChar = sumChar + (oneletter.Size());
             }
             Console.WriteLine(sumChar);
-            for(Iterator iter = file.WordIterator(); iter.HasNext();){
+            for(IIterator iter = file.WordIterator(); iter.HasNext();){
             StatisticalAnalysis oneletter = new StatisticalAnalysis(iter);
             sumWord = sumWord + (oneletter.Size());
+            sumDictionary = oneletter.DictionarySize(words);
             }
             Console.WriteLine(sumWord);
+            Console.WriteLine(sumDictionary);
 
+            
             
 
         }

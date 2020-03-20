@@ -3,7 +3,7 @@ using System;
 
 namespace csharp_text_analyser_lukaszkedziora
 {
-    public class FileContent : IterableText
+    public class FileContent : IIterableText
     {
         public string File;
         private string FileWord;
@@ -21,12 +21,12 @@ namespace csharp_text_analyser_lukaszkedziora
             
         }
 
-        public Iterator CharIterator(){
+        public IIterator CharIterator(){
             File = File.Replace(" " , "");
             return new CharIterator(this);
         }
 
-        public Iterator WordIterator(){   
+        public IIterator WordIterator(){   
             FileWordList = FileWord.Split(' ');
             return new WordIterator(this);
 
