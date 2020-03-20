@@ -16,6 +16,8 @@ namespace csharp_text_analyser_lukaszkedziora
             FileContent file = new FileContent("test.txt");
             HashSet<string> words = new HashSet<string>(); 
             int sumDictionary = 0;
+            int countOf = 0;
+            
 
 
            
@@ -26,12 +28,15 @@ namespace csharp_text_analyser_lukaszkedziora
             }
             Console.WriteLine(sumChar);
             for(IIterator iter = file.WordIterator(); iter.HasNext();){
-            StatisticalAnalysis oneletter = new StatisticalAnalysis(iter);
-            sumWord = sumWord + (oneletter.Size());
-            sumDictionary = oneletter.DictionarySize(words);
+            StatisticalAnalysis statistical = new StatisticalAnalysis(iter);
+            sumWord = sumWord + (statistical.Size());
+            sumDictionary = statistical.DictionarySize(words);
+            countOf = countOf + statistical.CountOf("gate");
             }
             Console.WriteLine(sumWord);
             Console.WriteLine(sumDictionary);
+            Console.WriteLine(countOf);
+
 
             
             

@@ -10,24 +10,23 @@ namespace csharp_text_analyser_lukaszkedziora
     {
         private IIterator Elements;
         private int counter = 0;
-       //private StringBuilder FileContentWithoutWhite = new StringBuilder(10);
+        private int counterCountOf = 0;
+
         public StatisticalAnalysis(IIterator elements){
              this.Elements = elements;
         }
     
-        public StatisticalAnalysis(){
-           
-
-        }
-
         public int CountOf(params string[] name){
+            if (Elements.MoveNext() == name[0]){
+                counterCountOf++;
+                return counterCountOf;
+            }
             return 0;
         }
 
         public int DictionarySize(HashSet<string> words){
 
             words.Add(Elements.MoveNext());
-
             return words.Count;       
         }
 
