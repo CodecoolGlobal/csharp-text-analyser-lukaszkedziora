@@ -12,7 +12,8 @@ namespace csharp_text_analyser_lukaszkedziora
             int sumChar = 0;
             int sumWord = 0;
             int sumDictionary = 0;
-            int countOf = 0;
+            int countOf = 0, countOf2 = 0, countOf3 = 0;
+
 
             var time = System.Diagnostics.Stopwatch.StartNew();            
             try{
@@ -31,12 +32,17 @@ namespace csharp_text_analyser_lukaszkedziora
                 StatisticalAnalysis statistical = new StatisticalAnalysis(iter);
                 sumWord = sumWord + (statistical.Size());
                 sumDictionary = statistical.DictionarySize(words);
-                countOf = countOf + statistical.CountOf("love", "hate", "music");
+                countOf = countOf + statistical.CountOf("love");
+                countOf2 = countOf2 + statistical.CountOf("hate");
+                countOf3 = countOf3 + statistical.CountOf("music");
+
                 }
                 Console.WriteLine("  Char count: " + sumChar);
                 Console.WriteLine("  Word count: " + sumWord);
                 Console.WriteLine("    Dict siz: " + sumDictionary);
                 Console.WriteLine("'love' count: " + countOf);
+                Console.WriteLine("'hate' count: " + countOf2);
+                Console.WriteLine("'music' count: " + countOf3);
                 Console.WriteLine();
             }
         }
