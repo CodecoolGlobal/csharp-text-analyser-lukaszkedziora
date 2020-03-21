@@ -13,8 +13,10 @@ namespace csharp_text_analyser_lukaszkedziora
             int sumWord = 0;
             int sumDictionary = 0;
             int countOf = 0;
-            
+
+            var time = System.Diagnostics.Stopwatch.StartNew();            
             try{
+            
             foreach (string file_name in args) {
                 
                 FileContent file = new FileContent(file_name);
@@ -42,6 +44,9 @@ namespace csharp_text_analyser_lukaszkedziora
                 catch (System.IO.FileNotFoundException) {
                     Console.WriteLine("Could not find file, please enter correct file name");
                 }
+            time.Stop();
+            double elapsedTime = time.ElapsedMilliseconds/1000.0;
+            Console.WriteLine($"Benchmark time: {elapsedTime} secs");
         }
         
     }
