@@ -25,7 +25,6 @@ namespace csharp_text_analyser_lukaszkedziora
                 StatisticalAnalysis oneletter = new StatisticalAnalysis(iter);
                 sumChar = sumChar + (oneletter.Size());
                 }
-                Console.Clear();
                 Console.WriteLine(file_name);
 
                 for(IIterator iter = file.WordIterator(); iter.HasNext();){
