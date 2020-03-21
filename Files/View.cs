@@ -3,8 +3,10 @@ using System;
 
 namespace csharp_text_analyser_lukaszkedziora
 {
+    // TODO: Class description
     class View
     {
+        // TODO: Method description
         public void Print(){
 
         }
