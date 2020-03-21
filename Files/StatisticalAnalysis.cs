@@ -1,7 +1,4 @@
-using System;
-using System.Text;
 using System.Collections.Generic;
-
 
 namespace csharp_text_analyser_lukaszkedziora
 {
@@ -11,7 +8,6 @@ namespace csharp_text_analyser_lukaszkedziora
         private IIterator Elements;
         private int counter = 0;
         private int counterCountOf = 0;
-
         public StatisticalAnalysis(IIterator elements){
              this.Elements = elements;
         }
@@ -25,7 +21,6 @@ namespace csharp_text_analyser_lukaszkedziora
         }
 
         public int DictionarySize(HashSet<string> words){
-
             words.Add(Elements.MoveNext());
             return words.Count;       
         }
@@ -36,7 +31,5 @@ namespace csharp_text_analyser_lukaszkedziora
               
             return counter;           
         } 
-
-
     }
 }

@@ -8,38 +8,44 @@ namespace csharp_text_analyser_lukaszkedziora
     {
         static void Main(string[] args)
         {
-            string[] argument = new string[1];
-            argument[0] = "test.txt";        
-            Console.WriteLine(argument[0]);
+            HashSet<string> words = new HashSet<string>(); 
             int sumChar = 0;
             int sumWord = 0;
-            FileContent file = new FileContent("test.txt");
-            HashSet<string> words = new HashSet<string>(); 
             int sumDictionary = 0;
             int countOf = 0;
             
+            try{
+            foreach (string file_name in args) {
+                
+                FileContent file = new FileContent(file_name);
+                           
+                for(IIterator iter = file.CharIterator(); iter.HasNext();){
+                StatisticalAnalysis oneletter = new StatisticalAnalysis(iter);
+                sumChar = sumChar + (oneletter.Size());
+                }
+                Console.Clear();
+                Console.WriteLine(file_name);
 
+                for(IIterator iter = file.WordIterator(); iter.HasNext();){
+                StatisticalAnalysis statistical = new StatisticalAnalysis(iter);
+                sumWord = sumWord + (statistical.Size());
+                sumDictionary = statistical.DictionarySize(words);
+                countOf = countOf + statistical.CountOf("love");
+                }
+                Console.WriteLine("Char count:   " + sumChar);
+                Console.WriteLine("Dict size:    " + sumWord);
+                Console.WriteLine("Word count:   " + sumDictionary);
+                Console.WriteLine("'love' count: " + countOf);
+                Console.WriteLine();
+            }
+            }
+                catch (System.IO.FileNotFoundException) {
+                    Console.WriteLine("Could not find file, please enter file name again");
+                }
+                 
 
+            
            
-           // foreach (string file_name in argument)
-            for(IIterator iter = file.CharIterator(); iter.HasNext();){
-            StatisticalAnalysis oneletter = new StatisticalAnalysis(iter);
-            sumChar = sumChar + (oneletter.Size());
-            }
-            Console.WriteLine(sumChar);
-            for(IIterator iter = file.WordIterator(); iter.HasNext();){
-            StatisticalAnalysis statistical = new StatisticalAnalysis(iter);
-            sumWord = sumWord + (statistical.Size());
-            sumDictionary = statistical.DictionarySize(words);
-            countOf = countOf + statistical.CountOf("gate");
-            }
-            Console.WriteLine(sumWord);
-            Console.WriteLine(sumDictionary);
-            Console.WriteLine(countOf);
-
-
-            
-            
 
         }
         
