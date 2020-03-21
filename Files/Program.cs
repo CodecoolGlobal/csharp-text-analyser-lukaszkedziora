@@ -7,7 +7,7 @@ namespace csharp_text_analyser_lukaszkedziora
     class Program
     {
         static void Main(string[] args)
-        {
+        {   
             HashSet<string> words = new HashSet<string>(); 
             int sumChar = 0;
             int sumWord = 0;
@@ -30,23 +30,18 @@ namespace csharp_text_analyser_lukaszkedziora
                 StatisticalAnalysis statistical = new StatisticalAnalysis(iter);
                 sumWord = sumWord + (statistical.Size());
                 sumDictionary = statistical.DictionarySize(words);
-                countOf = countOf + statistical.CountOf("love");
+                countOf = countOf + statistical.CountOf("love", "hate", "music");
                 }
-                Console.WriteLine("Char count:   " + sumChar);
-                Console.WriteLine("Dict size:    " + sumWord);
-                Console.WriteLine("Word count:   " + sumDictionary);
+                Console.WriteLine("  Char count: " + sumChar);
+                Console.WriteLine("  Word count: " + sumWord);
+                Console.WriteLine("    Dict siz: " + sumDictionary);
                 Console.WriteLine("'love' count: " + countOf);
                 Console.WriteLine();
             }
-            }
+        }
                 catch (System.IO.FileNotFoundException) {
-                    Console.WriteLine("Could not find file, please enter file name again");
+                    Console.WriteLine("Could not find file, please enter correct file name");
                 }
-                 
-
-            
-           
-
         }
         
     }
